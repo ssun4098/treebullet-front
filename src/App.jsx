@@ -2,10 +2,11 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { getProjectList } from './api/ProjectApi'
 
 function App() {
   const [count, setCount] = useState(0)
-
+  console.log(getProjectList(0, 10));
   return (
     <>
       <div>
