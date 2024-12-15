@@ -1,34 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { getProjectList } from './api/ProjectApi'
+import React from 'react';
+import { Layout, theme } from 'antd';
+import TestCaseList from './component/tc/list';
+
+const { Header, Content, Footer } = Layout;
 
 function App() {
-  const [count, setCount] = useState(0)
-  console.log(getProjectList(0, 10));
+  const {
+    token: { colorBgContainer, borderRadiusLG },
+  } = theme.useToken();
+  
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Layout hasSider>
+        <TestCaseList projectId="1" />
+      <Layout
+        style={{
+          marginInlineStart: 200,
+          height: '100vh'
+        }}
+      >
+        <Header
+          style={{
+            padding: 0,
+            background: colorBgContainer,
+          }}
+        />
+        <Content
+          style={{
+            margin: '24px 16px 0',
+            overflow: 'initial'
+          }}
+        >
+          <object data="http://localhost:8080" ></object>
+        </Content>
+        <Footer>
+          
+        </Footer>
+      </Layout>
+      </Layout>
     </>
   )
 }
