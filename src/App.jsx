@@ -1,42 +1,36 @@
 import React from 'react';
-import { Layout, theme } from 'antd';
+import { Layout, Form, Radio, ConfigProvider } from 'antd';
 import TestCaseList from './component/tc/list';
+import TestResultEditor from './component/tc/result';
 
 const { Header, Content, Footer } = Layout;
 
 function App() {
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
-  
+
+  const onChange = (e) => {
+    console.log(`radio checked:${e.target.value}`);
+  };
+
   return (
     <>
       <Layout hasSider>
         <TestCaseList projectId="1" />
-      <Layout
-        style={{
-          marginInlineStart: 200,
-          height: '100vh'
-        }}
-      >
-        <Header
+        <Layout
           style={{
-            padding: 0,
-            background: colorBgContainer,
-          }}
-        />
-        <Content
-          style={{
-            margin: '24px 16px 0',
-            overflow: 'initial'
+            marginInlineStart: 200,
+            height: '100vh'
           }}
         >
-          <object data="http://localhost:8080" ></object>
-        </Content>
-        <Footer>
-          
-        </Footer>
-      </Layout>
+          <Content
+            style={{
+              margin: '24px 16px 0',
+              overflow: 'initial'
+            }}
+          >
+            <object data="http://localhost:8080" ></object>
+          </Content>
+          <TestResultEditor />
+        </Layout>
       </Layout>
     </>
   )

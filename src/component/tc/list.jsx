@@ -24,7 +24,6 @@ const siderStyle = {
           key: item['id'],
           label: item['name']
         }))
-        console.log(menuItemList);
         setItems(menuItemList);
     };
 
